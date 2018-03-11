@@ -27,20 +27,28 @@ This script will backup and then **delete** all rows matching the defined key; s
 
 - Put database-import.sh somewhere on your system, ie. `/home/myuser/scripts/`
 
-- Make the script executable:
+Make the script executable:
 
-`chmod +x /home/myuser/scripts/database-import.sh`
+```bash
+chmod +x /home/myuser/scripts/database-import.sh
+```
 
-- Create an alias so you can trigger it from anywhere:
+Create an alias so you can trigger it from anywhere:
 
-`nano ~/.bashrc`
+```bash
+nano ~/.bashrc
+```
 
-- Add the following to the bottom of your **.bashrc** file:
+Add the following to the bottom of your **.bashrc** file:
 
-`alias tblimport='/home/myuser/scripts/database-import.sh'`
+```bash
+alias tblimport='/home/myuser/scripts/database-import.sh'
+```
 
-- Update your bash config without requiring logout:
+Update your bash config without requiring logout:
 
-`. ~/.bashrc`
+```bash
+. ~/.bashrc
+```
 
 Run `tblimport` in your cli any time you need to export the table rows!
