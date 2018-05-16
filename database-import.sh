@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DATE="`date +%m-%d-%y-%s`"
+DATE=$(date +%m-%d-%y-%s)
 
 #database config
 DB_USER="your_database_username"
@@ -18,11 +18,11 @@ echo "  Backing up the database..."
 mysqldump -u"$DB_USER" -p"$DB_PW" --host=localhost "$DB_CNF" > "$BACKUP_DIRECTORY"/"$DB_CNF"-"$DATE".sql
 
 #purge the affected rows
-echo "  Purging the "$KEY_TARGET" rows..."
-echo "DELETE FROM "$TABLE_TARGET" WHERE "$TABLE_ROW_TARGET" = '"$KEY_TARGET"'" | mysql -u"$DB_USER" -p"$DB_PW" --host=localhost "$DB_CNF"
+echo "  Purging the $KEY_TARGET rows..."
+echo "DELETE FROM $TABLE_TARGET WHERE $TABLE_ROW_TARGET = '$KEY_TARGET' | mysql -u$DB_USER -p$DB_PW --host=localhost $DB_CNF"
 
 #import the new rows
-echo "  Importing "$SCHEMA_LOCATION""
+echo "  Importing $SCHEMA_LOCATION"
 mysql -u "$DB_USER" -p"$DB_PW" "$DB_CNF" < "$SCHEMA_LOCATION"
 
 echo "  IMPORT COMPLETE!"
